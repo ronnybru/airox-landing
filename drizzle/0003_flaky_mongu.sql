@@ -1,0 +1,1 @@
+ALTER TABLE "body_scans" ADD COLUMN "tags" text[];

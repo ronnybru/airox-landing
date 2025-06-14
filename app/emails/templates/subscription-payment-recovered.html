@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Good News: Payment Recovered</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			.header {
+				text-align: center;
+				padding-bottom: 20px;
+				border-bottom: 1px solid #eee;
+			}
+			.content {
+				padding: 20px 0;
+			}
+			.footer {
+				text-align: center;
+				padding-top: 20px;
+				border-top: 1px solid #eee;
+				font-size: 12px;
+				color: #777;
+			}
+			.button {
+				display: inline-block;
+				background-color: #38a169;
+				color: white;
+				text-decoration: none;
+				padding: 10px 20px;
+				border-radius: 4px;
+				margin: 20px 0;
+				text-align: center;
+			}
+			.details {
+				background-color: #f9f9f9;
+				padding: 15px;
+				border-radius: 4px;
+				margin: 20px 0;
+			}
+			.details p {
+				margin: 5px 0;
+			}
+			.success {
+				background-color: #f0fff4;
+				border-left: 4px solid #38a169;
+				padding: 15px;
+				margin: 20px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h1>Good News: Payment Recovered</h1>
+		</div>
+
+		<div class="content">
+			<p>Hello {{name}},</p>
+
+			<div class="success">
+				<p>
+					We're happy to inform you that your payment for the
+					<strong>{{planName}}</strong> subscription has been successfully
+					processed.
+				</p>
+			</div>
+
+			<p>
+				Your subscription is now active again, and you can continue enjoying all
+				the benefits of your plan.
+			</p>
+
+			{{#nextBillingDate}}
+			<div class="details">
+				<h3>Subscription Details:</h3>
+				<p><strong>Plan:</strong> {{planName}}</p>
+				<p><strong>Next Billing Date:</strong> {{nextBillingDate}}</p>
+			</div>
+			{{/nextBillingDate}}
+
+			<p>
+				If you have any questions or need assistance, please don't hesitate to
+				contact our support team.
+			</p>
+
+			<p>Best regards,<br />The Team</p>
+		</div>
+
+		<div class="footer">
+			<p>&copy; 2025 airox. All rights reserved.</p>
+			<p>
+				This email was sent to you because you have an active subscription with
+				our service.
+			</p>
+		</div>
+	</body>
+</html>

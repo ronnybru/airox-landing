@@ -1,0 +1,1 @@
+ALTER TABLE "workout_sessions" ADD COLUMN "current_exercise_index" integer DEFAULT 0;

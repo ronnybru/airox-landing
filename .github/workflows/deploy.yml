@@ -1,0 +1,238 @@
+name: Deploy to VPS
+
+# Default environment variables
+env:
+  APP_NAME: airox
+  DOMAIN: airox.ai
+  APP_PORT: 3013
+  VPS_USERNAME: bruface
+  VPS_HOST: 92.220.217.1 # Replace with your actual VPS IP
+  VPS_PASSWORD: Fire1243!! # Replace with your actual VPS password (or use GitHub secrets)
+  GITHUB_TOKEN: ${{ github.token }} # GitHub token for repository access
+
+on:
+  push:
+    branches:
+      - main # Change this to your main branch name if different (e.g., master)
+  workflow_dispatch: # Allows manual triggering from GitHub UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create deployment package
+        run: |
+          # Create a directory for the files to be deployed
+          mkdir -p /tmp/deploy-files
+          # Copy files to the temporary directory (excluding node_modules and .git)
+          rsync -av --exclude=node_modules --exclude=.git --exclude=deploy.tar.gz --exclude=.env . /tmp/deploy-files/
+          # Create the tar file from the temporary directory
+          tar -czf deploy.tar.gz -C /tmp/deploy-files .
+          # Verify the tar file was created
+          ls -la deploy.tar.gz
+
+      - name: Upload deployment package to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ env.VPS_HOST || secrets.VPS_HOST }}
+          port: 4015
+          username: ${{ env.VPS_USERNAME || secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          password: ${{ env.VPS_PASSWORD || secrets.VPS_PASSWORD }}
+          source: "deploy.tar.gz"
+          target: "/tmp"
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          # Use environment variables first, then fall back to GitHub secrets
+          host: ${{ env.VPS_HOST || secrets.VPS_HOST }}
+          port: 4015
+          username: ${{ env.VPS_USERNAME || secrets.VPS_USERNAME }}
+          # Use SSH key if available
+          key: ${{ secrets.VPS_SSH_KEY }}
+          # Use password from env or secrets if SSH key is not available
+          password: ${{ env.VPS_PASSWORD || secrets.VPS_PASSWORD }}
+          # Ensure the workflow fails if any command in the script fails
+          script: |
+            # Exit immediately if a command exits with a non-zero status
+            set -e
+            # Create app directory if it doesn't exist
+            mkdir -p /opt/${{ env.APP_NAME }}
+
+            # Create a temporary directory for the new deployment
+            DEPLOY_DIR=$(mktemp -d)
+            echo "Created temporary directory: $DEPLOY_DIR"
+
+            # Extract the uploaded deployment package
+            echo "Extracting deployment package..."
+            tar -xzf /tmp/deploy.tar.gz -C $DEPLOY_DIR
+            cd $DEPLOY_DIR
+            echo "Files in deployment directory:"
+            ls -la
+
+            # Verify Dockerfile exists
+            if [ ! -f Dockerfile ]; then
+              echo "Error: Dockerfile not found!"
+              exit 1
+            fi
+
+            # Check if Docker is installed, if not install it
+            if ! command -v docker &> /dev/null; then
+              echo "Docker not found. Installing Docker and Docker Compose from the official repository..."
+              
+              # Remove any conflicting packages
+              for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do apt-get remove -y $pkg || true; done
+              
+              # Set up Docker's apt repository
+              apt-get update
+              apt-get install -y ca-certificates curl
+              install -m 0755 -d /etc/apt/keyrings
+              curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+              chmod a+r /etc/apt/keyrings/docker.asc
+              
+              # Add the repository to Apt sources
+              echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+              apt-get update
+              
+              # Install Docker packages including Docker Compose plugin
+              apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+              
+              # Verify Docker installation
+              echo "Docker installed successfully. Version:"
+              docker --version
+            else
+              echo "Docker is already installed. Version:"
+              docker --version
+            fi
+
+            # Backup .env.deploy file if it exists
+            if [ -f /opt/${{ env.APP_NAME }}/.env.deploy ]; then
+              echo "Backing up existing .env.deploy file"
+              cp /opt/${{ env.APP_NAME }}/.env.deploy /tmp/.env.deploy.backup
+            fi
+
+            # Remove the existing project directory and then copy the new files
+            echo "Removing existing project directory and copying new files"
+            rm -rf /opt/${{ env.APP_NAME }}/*
+
+            # Restore .env.deploy file if it was backed up
+            if [ -f /tmp/.env.deploy.backup ]; then
+              echo "Restoring .env.deploy file from backup"
+              cp /tmp/.env.deploy.backup /opt/${{ env.APP_NAME }}/.env.deploy
+              rm /tmp/.env.deploy.backup
+            fi
+
+            # Copy new files
+            cp -rf . /opt/${{ env.APP_NAME }}/
+
+            # Copy .env.deploy file to the VPS if it exists in the repository (will overwrite if it exists)
+            if [ -f .env.deploy ]; then
+              echo "Copying .env.deploy file to /opt/${{ env.APP_NAME }}/.env.deploy (overwriting if exists)"
+              cp -f .env.deploy /opt/${{ env.APP_NAME }}/.env.deploy
+            fi
+
+            # Check if .env.deploy file exists on the VPS
+            if [ ! -f /opt/${{ env.APP_NAME }}/.env.deploy ]; then
+              echo "Error: /opt/${{ env.APP_NAME }}/.env.deploy file not found!"
+              echo "Make sure to add .env.deploy to your repository or create it manually on the VPS."
+              exit 1
+            fi
+
+            # Verify Dockerfile exists in the app directory
+            if [ ! -f /opt/${{ env.APP_NAME }}/Dockerfile ]; then
+              echo "Error: Dockerfile not found in /opt/${{ env.APP_NAME }}!"
+              ls -la /opt/${{ env.APP_NAME }}
+              exit 1
+            fi
+
+            # Check if global-shared network exists, if not create it
+            if ! docker network ls | grep -q global-shared; then
+              echo "Creating global-shared Docker network..."
+              docker network create global-shared
+            else
+              echo "global-shared Docker network already exists."
+            fi
+
+            # Check if Redis is running, if not start it
+            if ! docker ps | grep -q "redis:latest"; then
+              echo "Redis container not found. Starting Redis container..."
+              docker run -d --name redis \
+                --network global-shared \
+                -p 6379:6379 \
+                --restart unless-stopped \
+                redis:latest redis-server --slaveof no one
+            else
+              echo "Redis container is already running."
+              # Ensure Redis is connected to the global-shared network
+              if ! docker network inspect global-shared | grep -q "\"redis\""; then
+                echo "Connecting Redis container to global-shared network..."
+                docker network connect global-shared redis
+              fi
+              # Ensure Redis is configured as master
+              echo "Reconfiguring Redis as master..."
+              docker exec redis redis-cli SLAVEOF NO ONE
+            fi
+
+            # Stop existing containers and start with docker-compose
+            echo "Stopping existing services and starting with docker-compose..."
+            cd /opt/${{ env.APP_NAME }}
+
+            # Stop any existing containers that might conflict
+            docker stop ${{ env.APP_NAME }}-app || true
+            docker rm ${{ env.APP_NAME }}-app || true
+
+            # Create a custom migration script
+            echo "Creating migration script..."
+            cat > migrate.sh << 'EOL'
+            #!/bin/sh
+            set -e
+
+            # Export environment variables from .env.deploy
+            set -a
+            . ./.env.deploy
+            set +a
+
+            # Run the migration using the builder image which has all dependencies
+            docker build --target builder -t app-builder .
+            docker run --rm --network global-shared \
+              -e DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@172.18.0.1:5433/${DATABASE_NAME}" \
+              -e DATABASE_HOST=172.18.0.1 \
+              -e DATABASE_PORT=5433 \
+              -e DATABASE_NAME \
+              -e DATABASE_USER \
+              -e DATABASE_PASSWORD \
+              app-builder sh -c "cd /app && rm -f .env && node scripts/run-migrations.mjs"
+            EOL
+
+            # Make the script executable
+            chmod +x migrate.sh
+
+            # Run the migration script
+            echo "Running database migrations..."
+            ./migrate.sh
+
+            # Start services with docker compose
+            echo "Starting services with docker compose..."
+            docker compose down || true
+            docker compose build
+            docker compose up -d
+
+            # Clean up
+            echo "Cleaning up..."
+            rm -rf $DEPLOY_DIR
+            rm -f /tmp/deploy.tar.gz
+
+            # Comprehensive Docker cleanup
+            echo "Performing comprehensive Docker cleanup..."
+            # Remove all stopped containers
+            docker container prune -f
+            # Remove all unused images (not just dangling ones)
+            docker image prune -a -f --filter "until=24h"
+            # Remove unused volumes
+            docker volume prune -f
+            # Remove unused networks
+            docker network prune -f

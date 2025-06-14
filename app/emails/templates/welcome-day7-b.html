@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Power User Secrets - airox</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			.header {
+				text-align: center;
+				padding: 30px 0;
+				background-color: #4f46e5;
+				color: white;
+				border-radius: 8px 8px 0 0;
+			}
+			.content {
+				padding: 30px;
+				background-color: #f9fafb;
+				border-radius: 0 0 8px 8px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			}
+			.footer {
+				text-align: center;
+				padding-top: 20px;
+				font-size: 12px;
+				color: #777;
+				margin-top: 20px;
+			}
+			.button {
+				display: inline-block;
+				background-color: #4f46e5;
+				color: white;
+				text-decoration: none;
+				padding: 12px 24px;
+				border-radius: 30px;
+				margin: 20px 0;
+				font-weight: bold;
+				text-align: center;
+			}
+			.pro-tip {
+				background-color: white;
+				border-radius: 8px;
+				padding: 20px;
+				margin: 20px 0;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+				border-left: 4px solid #4f46e5;
+			}
+			.pro-tip-header {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 15px;
+			}
+			.pro-tip-icon {
+				background-color: #4f46e5;
+				color: white;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: bold;
+			}
+			.pro-tip-title {
+				margin: 0;
+				color: #4f46e5;
+				font-size: 18px;
+			}
+			.shortcut-grid {
+				display: grid;
+				grid-template-columns: auto 1fr;
+				gap: 10px;
+				margin: 15px 0;
+			}
+			.shortcut-key {
+				background-color: #f0f4ff;
+				padding: 5px 10px;
+				border-radius: 4px;
+				font-family: monospace;
+				font-weight: bold;
+			}
+			.case-study {
+				background-color: #f0f4ff;
+				padding: 20px;
+				border-radius: 8px;
+				margin: 25px 0;
+				position: relative;
+			}
+			.case-study-header {
+				font-weight: bold;
+				color: #4f46e5;
+				margin-bottom: 10px;
+				font-size: 16px;
+			}
+			.results-highlight {
+				font-weight: bold;
+				color: #4f46e5;
+				margin-top: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h1>Power User Secrets Revealed</h1>
+		</div>
+
+		<div class="content">
+			<p>Hi {{name}},</p>
+
+			<p>
+				Congratulations on your first week with airox! You're now ready to
+				unlock the advanced techniques that our power users leverage to maximize
+				their productivity.
+			</p>
+
+			<div class="pro-tip">
+				<div class="pro-tip-header">
+					<div class="pro-tip-icon">⚡</div>
+					<h3 class="pro-tip-title">Speed Demons: Keyboard Shortcuts</h3>
+				</div>
+				<p>
+					Our top users rarely touch their mouse. Here are the essential
+					shortcuts that will dramatically speed up your workflow:
+				</p>
+				<div class="shortcut-grid">
+					<div class="shortcut-key">Ctrl+Shift+P</div>
+					<div>Command palette - access any function instantly</div>
+
+					<div class="shortcut-key">Alt+1-5</div>
+					<div>Jump between workspace sections</div>
+
+					<div class="shortcut-key">Ctrl+Alt+C</div>
+					<div>Create new automation from selection</div>
+
+					<div class="shortcut-key">Ctrl+.</div>
+					<div>Quick settings for current context</div>
+				</div>
+				<p>
+					<a
+						href="#"
+						style="color: #4f46e5; text-decoration: none; font-weight: bold"
+						>Download our complete shortcuts cheat sheet →</a
+					>
+				</p>
+			</div>
+
+			<div class="pro-tip">
+				<div class="pro-tip-header">
+					<div class="pro-tip-icon">🔄</div>
+					<h3 class="pro-tip-title">Workflow Automation Mastery</h3>
+				</div>
+				<p>
+					Create custom automation sequences that chain multiple actions
+					together. Our power users automate up to 80% of their repetitive
+					tasks.
+				</p>
+				<p>Start with these templates we've prepared for you:</p>
+				<ul>
+					<li>
+						<strong>Daily Standup Automator</strong> - Prepares and distributes
+						daily reports
+					</li>
+					<li>
+						<strong>Client Onboarding Sequence</strong> - Streamlines new client
+						setup
+					</li>
+					<li>
+						<strong>Project Milestone Tracker</strong> - Automates progress
+						updates
+					</li>
+				</ul>
+				<p>
+					<a
+						href="{{templatesUrl}}"
+						style="color: #4f46e5; text-decoration: none; font-weight: bold"
+						>Access these templates →</a
+					>
+				</p>
+			</div>
+
+			<div class="case-study">
+				<div class="case-study-header">CASE STUDY: ACME DESIGN STUDIO</div>
+				<p>
+					ACME Design implemented our advanced template system and keyboard
+					shortcuts for their 15-person team.
+				</p>
+				<p class="results-highlight">
+					Results: 40% reduction in project setup time, 25% increase in client
+					deliverables, and elimination of 15 weekly hours of administrative
+					work.
+				</p>
+			</div>
+
+			<p>
+				We've compiled all these advanced techniques and more in our
+				comprehensive Power User Guide:
+			</p>
+
+			<p>
+				<a href="{{advancedGuideUrl}}" class="button"
+					>Download Power User Guide</a
+				>
+			</p>
+
+			<p>
+				This concludes our welcome email series, but your journey to mastery is
+				just beginning. Our support team is always available to help you
+				implement these advanced techniques.
+			</p>
+
+			<p>
+				We'd love to hear which of these tips you found most valuable. Simply
+				reply to this email to share your experience.
+			</p>
+
+			<p>To your continued success,<br />The airox Team</p>
+		</div>
+
+		<div class="footer">
+			<p>&copy; 2025 airox. All rights reserved.</p>
+			<p>
+				This email was sent to you because you signed up for airox.
+				{{#unsubscribeUrl}}
+				<a href="{{unsubscribeUrl}}">Unsubscribe</a>
+				{{/unsubscribeUrl}}
+			</p>
+		</div>
+	</body>
+</html>

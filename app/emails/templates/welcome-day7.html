@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Advanced Tips & Best Practices - airox</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			.header {
+				text-align: center;
+				padding-bottom: 20px;
+				border-bottom: 1px solid #eee;
+			}
+			.content {
+				padding: 20px 0;
+			}
+			.footer {
+				text-align: center;
+				padding-top: 20px;
+				border-top: 1px solid #eee;
+				font-size: 12px;
+				color: #777;
+			}
+			.button {
+				display: inline-block;
+				background-color: #4f46e5;
+				color: white;
+				text-decoration: none;
+				padding: 10px 20px;
+				border-radius: 4px;
+				margin: 20px 0;
+			}
+			.tip-container {
+				margin: 25px 0;
+			}
+			.tip {
+				background-color: #f0f4ff;
+				padding: 15px;
+				border-radius: 4px;
+				margin-bottom: 15px;
+				border-left: 4px solid #4f46e5;
+			}
+			.tip h3 {
+				margin-top: 0;
+				color: #4f46e5;
+			}
+			.testimonial {
+				background-color: #f9f9f9;
+				padding: 20px;
+				border-radius: 4px;
+				margin: 25px 0;
+				font-style: italic;
+			}
+			.testimonial-author {
+				font-weight: bold;
+				font-style: normal;
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h1>Advanced Tips & Best Practices</h1>
+		</div>
+
+		<div class="content">
+			<p>Hello {{name}},</p>
+
+			<p>
+				It's been a week since you joined airox, and we hope you're starting to
+				feel at home with our platform. Today, we'd like to share some advanced
+				tips and best practices that our power users swear by.
+			</p>
+
+			<div class="tip-container">
+				<div class="tip">
+					<h3>1. Keyboard Shortcuts</h3>
+					<p>Speed up your workflow with these essential keyboard shortcuts:</p>
+					<ul>
+						<li>
+							<strong>Ctrl+Space</strong> - Quick search across all content
+						</li>
+						<li><strong>Ctrl+B</strong> - Toggle sidebar visibility</li>
+						<li><strong>Ctrl+S</strong> - Save current work</li>
+						<li><strong>Ctrl+/</strong> - Show all available shortcuts</li>
+					</ul>
+				</div>
+
+				<div class="tip">
+					<h3>2. Custom Templates</h3>
+					<p>
+						Create your own templates for frequently used items. This can save
+						hours of repetitive setup time.
+					</p>
+					<p>
+						<a href="{{templatesUrl}}"
+							>Learn how to create custom templates →</a
+						>
+					</p>
+				</div>
+
+				<div class="tip">
+					<h3>3. Advanced Filters</h3>
+					<p>
+						Use our advanced filtering system to quickly find exactly what you
+						need, even in large datasets.
+					</p>
+					<p>
+						Try combining multiple filters and saving your frequently used
+						filter combinations.
+					</p>
+				</div>
+			</div>
+
+			<div class="testimonial">
+				<p>
+					"After implementing the custom templates and keyboard shortcuts, my
+					team reduced project setup time by 70%. airox has transformed how we
+					work."
+				</p>
+				<p class="testimonial-author">— Sarah J., Product Manager</p>
+			</div>
+
+			<p>
+				We've also put together a comprehensive guide with more advanced
+				techniques that can help you become a true airox power user.
+			</p>
+
+			<p>
+				<a href="{{advancedGuideUrl}}" class="button"
+					>Download Advanced Guide</a
+				>
+			</p>
+
+			<p>
+				This concludes our welcome email series, but our support doesn't end
+				here. Our team is always available to help you with any questions or
+				challenges you might face.
+			</p>
+
+			<p>
+				We'd love to hear about your experience so far. If you have a moment,
+				please reply to this email and let us know how you're finding airox.
+			</p>
+
+			<p>Here's to your continued success!<br />The airox Team</p>
+		</div>
+
+		<div class="footer">
+			<p>&copy; 2025 airox. All rights reserved.</p>
+			<p>
+				This email was sent to you because you signed up for airox.
+				{{#unsubscribeUrl}}
+				<a href="{{unsubscribeUrl}}">Unsubscribe</a>
+				{{/unsubscribeUrl}}
+			</p>
+		</div>
+	</body>
+</html>

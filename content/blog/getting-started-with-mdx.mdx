@@ -1,0 +1,83 @@
+---
+title: "Getting Started with MDX"
+description: "Learn how to use MDX to create interactive blog posts with React components"
+publishDate: "2023-05-15"
+updatedAt: "2023-06-20"
+frontImage: "https://res.cloudinary.com/dsbyq8lkx/image/upload/v1699893896/vfnp1r39cq8cm0vtfb9e.jpg"
+tags: ["MDX", "React", "Web Development"]
+published: true
+author:
+  name: "Jane Smith"
+  url: "https://twitter.com/janesmith"
+  image: "https://randomuser.me/api/portraits/women/17.jpg"
+---
+
+# Getting Started with MDX
+
+MDX is a powerful format that combines Markdown with JSX, allowing you to use React components directly in your content.
+
+## Why MDX?
+
+MDX provides several advantages over regular Markdown:
+
+- **Interactive Components**: Embed React components directly in your content
+- **Reusable Components**: Create and reuse UI components across your blog posts
+- **Dynamic Content**: Create calculators, charts, and interactive demos
+- **Full React Power**: Access to all React features and hooks
+
+<Callout type='info'>
+	MDX is perfect for technical blogs, documentation sites, and educational
+	content where interactivity enhances the learning experience.
+</Callout>
+
+## Interactive Calculator Example
+
+Below is an example of an interactive calculator component embedded directly in the MDX content:
+
+<Calculator />
+
+## How to Use MDX in Next.js
+
+To use MDX in your Next.js project, you need to:
+
+1. Install the necessary dependencies:
+
+```bash
+npm install next-mdx-remote gray-matter
+```
+
+2. Create a component to render MDX content:
+
+```jsx
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { components } from "./mdx-components";
+
+export function CustomMDX({ source }) {
+	return <MDXRemote source={source} components={components} />;
+}
+```
+
+3. Create your MDX components:
+
+```jsx
+// mdx-components.jsx
+export const components = {
+	h1: (props) => <h1 className='text-3xl font-bold' {...props} />,
+	// Add more component overrides here
+};
+```
+
+## Best Practices
+
+When working with MDX, keep these best practices in mind:
+
+1. **Keep Components Simple**: Interactive components should be focused and easy to use
+2. **Optimize Performance**: Heavy components can slow down your page
+3. **Provide Fallbacks**: Ensure content is still valuable if JavaScript is disabled
+4. **Test Thoroughly**: Interactive components need more testing than static content
+
+## Conclusion
+
+MDX brings the power of React components to your Markdown content, enabling you to create rich, interactive blog posts. By combining the simplicity of Markdown with the power of React, you can create engaging content that stands out from traditional static blogs.
+
+Start experimenting with MDX today and take your blog to the next level!

@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "unique_health_data_entry" ON "health_data" USING btree ("user_id","data_type","recorded_at","source");

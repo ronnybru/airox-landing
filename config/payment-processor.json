@@ -1,0 +1,122 @@
+{
+  "_comment": "This file contains configuration for both credit packages and membership tiers used with Lemon Squeezy integration.",
+  "_creditPackagesInfo": "Credit packages are one-time purchases that add credits to a user's account. Each package has an amount (number of credits), price (in cents), and Lemon Squeezy variant/product IDs that are populated when synced.",
+  "creditPackages": [
+    {
+      "amount": 100,
+      "price": 999,
+      "variantId": 781724,
+      "productId": 502500
+    },
+    {
+      "amount": 1000,
+      "price": 4999,
+      "variantId": 781734,
+      "productId": 502500
+    },
+    {
+      "amount": 5000,
+      "price": 19999,
+      "variantId": 781737,
+      "productId": 502500
+    }
+  ],
+  "_membershipTiersInfo": "Membership tiers are subscription plans that users can purchase. Each tier has a name, price (in cents), credits (awarded monthly or one-time for lifetime), and Lemon Squeezy variant/product IDs that are populated when synced.",
+  "_membershipTiersUsage": "To add or modify membership tiers, add entries to this array and run the syncPlans function. The name must be one of: silver_monthly, silver_yearly, gold_monthly, gold_yearly, or lifetime.",
+  "membershipTiers": [
+    {
+      "name": "silver_monthly",
+      "price": 3990,
+      "credits": 100,
+      "lemonSqueezyVariantId": 781441,
+      "lemonSqueezyProductId": 502312,
+      "active": true,
+      "uiData": {
+        "title": "Silver",
+        "features": [
+          "100 credits per month",
+          "Basic support",
+          "Access to core features"
+        ],
+        "badge": "",
+        "color": "bg-gray-200 hover:bg-gray-300"
+      }
+    },
+    {
+      "name": "silver_yearly",
+      "price": 16728,
+      "credits": 100,
+      "lemonSqueezyVariantId": 781442,
+      "lemonSqueezyProductId": 502312,
+      "active": true,
+      "uiData": {
+        "title": "Silver",
+        "features": [
+          "100 credits per month",
+          "Basic support",
+          "Access to core features"
+        ],
+        "badge": "",
+        "color": "bg-gray-200 hover:bg-gray-300"
+      }
+    },
+    {
+      "name": "gold_monthly",
+      "price": 4990,
+      "credits": 300,
+      "lemonSqueezyVariantId": 781444,
+      "lemonSqueezyProductId": 502312,
+      "active": true,
+      "uiData": {
+        "title": "Gold",
+        "features": [
+          "300 credits per month",
+          "Priority support",
+          "Access to all features",
+          "Advanced analytics"
+        ],
+        "badge": "Popular",
+        "color": "bg-yellow-100 hover:bg-yellow-200"
+      }
+    },
+    {
+      "name": "gold_yearly",
+      "price": 41916,
+      "credits": 300,
+      "lemonSqueezyVariantId": 781445,
+      "lemonSqueezyProductId": 502312,
+      "active": true,
+      "uiData": {
+        "title": "Gold",
+        "features": [
+          "300 credits per month",
+          "Priority support",
+          "Access to all features",
+          "Advanced analytics"
+        ],
+        "badge": "Popular",
+        "color": "bg-yellow-100 hover:bg-yellow-200"
+      }
+    },
+    {
+      "name": "lifetime",
+      "price": 29990,
+      "credits": 1000,
+      "lemonSqueezyVariantId": 781447,
+      "lemonSqueezyProductId": 502312,
+      "active": true,
+      "uiData": {
+        "title": "Lifetime",
+        "features": [
+          "1000 credits forever",
+          "Premium support",
+          "Access to all features",
+          "Advanced analytics",
+          "Early access to new features"
+        ],
+        "badge": "Best Value",
+        "color": "bg-purple-100 hover:bg-purple-200"
+      }
+    }
+  ]
+}

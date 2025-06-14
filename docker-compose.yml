@@ -1,0 +1,64 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://airox.ai}
+        NEXT_TELEMETRY_DISABLED: 1
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-3013}:3000"
+    env_file:
+      - .env.deploy
+    environment:
+      - NODE_ENV=production
+      - HOSTNAME=0.0.0.0
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  cron:
+    build:
+      context: .
+      dockerfile: Dockerfile.cron
+    restart: unless-stopped
+    env_file:
+      - .env.deploy
+    environment:
+      - NODE_ENV=production
+      - HOSTNAME=0.0.0.0
+      - NEXT_PUBLIC_APP_URL=http://app:3000
+    depends_on:
+      - app
+      - db
+    networks:
+      - app-network
+
+  db:
+    container_name: airox-db
+    image: postgres:16.4-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data_airox:/var/lib/postgresql/data
+    env_file:
+      - .env.deploy
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_DB=${DATABASE_NAME}
+    ports:
+      - "${DATABASE_EXTERNAL_PORT:-5433}:5432"
+    networks:
+      app-network:
+        aliases:
+          - airox-postgres
+
+networks:
+  app-network:
+    external:
+      name: global-shared
+
+volumes:
+  postgres_data_airox:

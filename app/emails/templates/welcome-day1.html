@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Welcome to airox!</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			.header {
+				text-align: center;
+				padding-bottom: 20px;
+				border-bottom: 1px solid #eee;
+			}
+			.content {
+				padding: 20px 0;
+			}
+			.footer {
+				text-align: center;
+				padding-top: 20px;
+				border-top: 1px solid #eee;
+				font-size: 12px;
+				color: #777;
+			}
+			.button {
+				display: inline-block;
+				background-color: #4f46e5;
+				color: white;
+				text-decoration: none;
+				padding: 10px 20px;
+				border-radius: 4px;
+				margin: 20px 0;
+			}
+			.highlight-box {
+				background-color: #f0f4ff;
+				border-left: 4px solid #4f46e5;
+				padding: 15px;
+				border-radius: 4px;
+				margin: 20px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h1>Welcome to airox!</h1>
+		</div>
+
+		<div class="content">
+			<p>Hello {{name}},</p>
+
+			<p>
+				Welcome to airox! We're thrilled to have you join our community. Your
+				journey to a more productive workflow starts now.
+			</p>
+
+			<div class="highlight-box">
+				<h3>Getting Started:</h3>
+				<p>Here are three quick steps to help you get started:</p>
+				<ol>
+					<li>Complete your profile</li>
+					<li>Explore the dashboard</li>
+					<li>Check out our quick start guide</li>
+				</ol>
+			</div>
+
+			<p>
+				<a href="{{dashboardUrl}}" class="button">Go to Dashboard</a>
+			</p>
+
+			<p>
+				Over the next week, we'll be sending you a few more emails with tips and
+				best practices to help you get the most out of airox.
+			</p>
+
+			<p>
+				If you have any questions or need assistance, our support team is always
+				here to help.
+			</p>
+
+			<p>Best regards,<br />The airox Team</p>
+		</div>
+
+		<div class="footer">
+			<p>&copy; 2025 airox. All rights reserved.</p>
+			<p>
+				This email was sent to you because you signed up for airox.
+				{{#unsubscribeUrl}}
+				<a href="{{unsubscribeUrl}}">Unsubscribe</a>
+				{{/unsubscribeUrl}}
+			</p>
+		</div>
+	</body>
+</html>

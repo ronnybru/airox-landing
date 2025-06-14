@@ -1,0 +1,1 @@
+ALTER TABLE "user_exercises" ADD COLUMN "base_duration" integer;

@@ -1,0 +1,1 @@
+ALTER TABLE "health_data" ALTER COLUMN "value" SET DATA TYPE real;

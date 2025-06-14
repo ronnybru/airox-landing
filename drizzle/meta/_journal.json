@@ -1,0 +1,104 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1748461358412,
+      "tag": "0000_parched_the_hand",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1748504364171,
+      "tag": "0001_reflective_klaw",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1748511270941,
+      "tag": "0002_nosy_kat_farrell",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1748721342562,
+      "tag": "0003_flaky_mongu",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1748758304889,
+      "tag": "0004_foamy_menace",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1749538538528,
+      "tag": "0005_numerous_pet_avengers",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1749539980545,
+      "tag": "0006_slim_scourge",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1749561514064,
+      "tag": "0007_colossal_golden_guardian",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1749565440939,
+      "tag": "0008_sudden_red_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1749627461801,
+      "tag": "0009_swift_star_brand",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1749667398185,
+      "tag": "0010_thankful_nomad",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1749668153727,
+      "tag": "0011_tan_cobalt_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1749677035889,
+      "tag": "0012_whole_puppet_master",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1749760679974,
+      "tag": "0013_slim_old_lace",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+/* Import Tailwind CSS */
+@import "tailwindcss";
+
+/* Define custom spacing for Tailwind CSS v4 */
+@theme {
+	--spacing-0: 0px;
+}
+
+[data-rehype-pretty-code-figure] pre {
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+[data-rehype-pretty-code-figure] code {
+	font-size: 0.875rem;
+	line-height: 1.7;
+	border-width: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+@media (min-width: 768px) {
+	[data-rehype-pretty-code-figure] code {
+		font-size: 1rem;
+	}
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] {
+	counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
+	counter-increment: line;
+	content: counter(line);
+	@apply mr-4 inline-block w-4 text-right text-gray-500;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+	@apply border-l-2 border-l-transparent px-3;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-line] {
+	background: rgba(200, 200, 255, 0.1);
+	@apply border-l-blue-400;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-chars] {
+	@apply rounded bg-zinc-600/50;
+	box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+}
+
+[data-rehype-pretty-code-figure] [data-chars-id] {
+	@apply border-b-2 p-1 shadow-none;
+}
+
+.subheading-anchor {
+	@apply no-underline hover:underline;
+}
+
+.mdx-content a {
+	@apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+.mdx-content blockquote {
+	@apply border-l-4 border-gray-200 dark:border-gray-700 pl-4 italic text-gray-700 dark:text-gray-300;
+}
+
+.mdx-content table {
+	@apply w-full border-collapse my-6;
+}
+
+.mdx-content table th {
+	@apply bg-gray-100 dark:bg-gray-800 text-left p-2 border border-gray-300 dark:border-gray-700;
+}
+
+.mdx-content table td {
+	@apply p-2 border border-gray-300 dark:border-gray-700;
+}
+
+.mdx-content pre {
+	@apply p-4 rounded-lg overflow-x-auto my-6;
+}
+
+.mdx-content code {
+	@apply font-mono text-sm;
+}
+
+.mdx-content p {
+	@apply my-4;
+}
+
+.mdx-content ul,
+.mdx-content ol {
+	@apply my-4 ml-6;
+}
+
+.mdx-content ul {
+	@apply list-disc;
+}
+
+.mdx-content ol {
+	@apply list-decimal;
+}
+
+.mdx-content h1,
+.mdx-content h2,
+.mdx-content h3,
+.mdx-content h4,
+.mdx-content h5,
+.mdx-content h6 {
+	@apply font-bold scroll-mt-20;
+}
+
+.mdx-content h1 {
+	@apply text-3xl mt-8 mb-4;
+}
+
+.mdx-content h2 {
+	@apply text-2xl mt-8 mb-4;
+}
+
+.mdx-content h3 {
+	@apply text-xl mt-6 mb-3;
+}
+
+.mdx-content h4 {
+	@apply text-lg mt-6 mb-3;
+}
+
+.mdx-content img {
+	@apply rounded-lg my-6 max-w-full;
+}
+
+.mdx-content .anchor {
+	@apply ml-2 text-gray-500 opacity-0 transition-opacity hover:opacity-100;
+}
+
+.mdx-content h1:hover .anchor,
+.mdx-content h2:hover .anchor,
+.mdx-content h3:hover .anchor,
+.mdx-content h4:hover .anchor,
+.mdx-content h5:hover .anchor,
+.mdx-content h6:hover .anchor {
+	@apply opacity-100;
+}

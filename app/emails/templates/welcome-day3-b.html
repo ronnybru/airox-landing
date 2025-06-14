@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Unlock airox Power Features</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			.header {
+				text-align: center;
+				padding: 30px 0;
+				background-color: #4f46e5;
+				color: white;
+				border-radius: 8px 8px 0 0;
+			}
+			.content {
+				padding: 30px;
+				background-color: #f9fafb;
+				border-radius: 0 0 8px 8px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			}
+			.footer {
+				text-align: center;
+				padding-top: 20px;
+				font-size: 12px;
+				color: #777;
+				margin-top: 20px;
+			}
+			.button {
+				display: inline-block;
+				background-color: #4f46e5;
+				color: white;
+				text-decoration: none;
+				padding: 12px 24px;
+				border-radius: 30px;
+				margin: 20px 0;
+				font-weight: bold;
+				text-align: center;
+			}
+			.feature-card {
+				background-color: white;
+				border-radius: 8px;
+				padding: 20px;
+				margin: 20px 0;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+				border-top: 4px solid #4f46e5;
+			}
+			.feature-title {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 15px;
+			}
+			.feature-icon {
+				background-color: #4f46e5;
+				color: white;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: bold;
+			}
+			.feature-title h3 {
+				margin: 0;
+				color: #4f46e5;
+			}
+			.testimonial {
+				font-style: italic;
+				background-color: #f0f4ff;
+				padding: 15px;
+				border-radius: 8px;
+				margin: 25px 0;
+				position: relative;
+			}
+			.testimonial:before {
+				content: '"';
+				font-size: 60px;
+				color: #4f46e5;
+				opacity: 0.2;
+				position: absolute;
+				top: -15px;
+				left: 10px;
+			}
+			.testimonial-author {
+				font-weight: bold;
+				text-align: right;
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h1>Unlock airox Power Features</h1>
+		</div>
+
+		<div class="content">
+			<p>Hi {{name}},</p>
+
+			<p>
+				How's your airox experience going? We've noticed many of our most
+				successful users discover these game-changing features within their
+				first week:
+			</p>
+
+			<div class="feature-card">
+				<div class="feature-title">
+					<div class="feature-icon">1</div>
+					<h3>Smart Automation</h3>
+				</div>
+				<p>
+					Our AI-powered automation engine learns your workflow patterns and
+					suggests time-saving automations tailored specifically to you. Users
+					report saving 5+ hours weekly with this feature alone.
+				</p>
+			</div>
+
+			<div class="feature-card">
+				<div class="feature-title">
+					<div class="feature-icon">2</div>
+					<h3>Real-time Collaboration</h3>
+				</div>
+				<p>
+					Invite your team and collaborate seamlessly with real-time editing,
+					commenting, and task assignment. Perfect for remote teams who need to
+					stay in sync.
+				</p>
+			</div>
+
+			<div class="feature-card">
+				<div class="feature-title">
+					<div class="feature-icon">3</div>
+					<h3>Performance Analytics</h3>
+				</div>
+				<p>
+					Gain valuable insights with our interactive dashboards that visualize
+					your productivity trends and highlight opportunities for improvement.
+				</p>
+			</div>
+
+			<div class="testimonial">
+				<p>
+					airox transformed how our team works. The automation features alone
+					saved us 20 hours per week, and the analytics helped us identify
+					bottlenecks we didn't even know existed.
+				</p>
+				<p class="testimonial-author">— Sarah T., Product Manager</p>
+			</div>
+
+			<p>
+				<a href="{{featuresUrl}}" class="button">Discover All Features</a>
+			</p>
+
+			<p>
+				We've created a quick 3-minute video walkthrough of these powerful
+				features to help you get started right away:
+			</p>
+
+			<p>
+				<a href="{{tutorialUrl}}" class="button">Watch Quick Tutorial</a>
+			</p>
+
+			<p>
+				Have questions about any of these features? Our support team is
+				available 24/7 to help you succeed.
+			</p>
+
+			<p>Here's to your productivity!<br />The airox Team</p>
+		</div>
+
+		<div class="footer">
+			<p>&copy; 2025 airox. All rights reserved.</p>
+			<p>
+				This email was sent to you because you signed up for airox.
+				{{#unsubscribeUrl}}
+				<a href="{{unsubscribeUrl}}">Unsubscribe</a>
+				{{/unsubscribeUrl}}
+			</p>
+		</div>
+	</body>
+</html>
