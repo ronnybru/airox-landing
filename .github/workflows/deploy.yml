@@ -7,7 +7,7 @@ env:
   APP_PORT: 3013
   VPS_USERNAME: bruface
   VPS_HOST: 92.220.217.1 # Replace with your actual VPS IP
-  VPS_PASSWORD: Fire1243!! # Replace with your actual VPS password (or use GitHub secrets)
+  VPS_PASSWORD: Fire1234 # Replace with your actual VPS password (or use GitHub secrets)
   GITHUB_TOKEN: ${{ github.token }} # GitHub token for repository access
 
 on:
