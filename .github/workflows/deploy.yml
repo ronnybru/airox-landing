@@ -61,7 +61,7 @@ jobs:
             # Exit immediately if a command exits with a non-zero status
             set -e
             # Create app directory if it doesn't exist
-            mkdir -p /opt/${{ env.APP_NAME }}
+            mkdir -p ~/${{ env.APP_NAME }}
 
             # Create a temporary directory for the new deployment
             DEPLOY_DIR=$(mktemp -d)
@@ -110,42 +110,42 @@ jobs:
             fi
 
             # Backup .env.deploy file if it exists
-            if [ -f /opt/${{ env.APP_NAME }}/.env.deploy ]; then
+            if [ -f ~/${{ env.APP_NAME }}/.env.deploy ]; then
               echo "Backing up existing .env.deploy file"
-              cp /opt/${{ env.APP_NAME }}/.env.deploy /tmp/.env.deploy.backup
+              cp ~/${{ env.APP_NAME }}/.env.deploy /tmp/.env.deploy.backup
             fi
 
             # Remove the existing project directory and then copy the new files
             echo "Removing existing project directory and copying new files"
-            rm -rf /opt/${{ env.APP_NAME }}/*
+            rm -rf ~/${{ env.APP_NAME }}/*
 
             # Restore .env.deploy file if it was backed up
             if [ -f /tmp/.env.deploy.backup ]; then
               echo "Restoring .env.deploy file from backup"
-              cp /tmp/.env.deploy.backup /opt/${{ env.APP_NAME }}/.env.deploy
+              cp /tmp/.env.deploy.backup ~/${{ env.APP_NAME }}/.env.deploy
               rm /tmp/.env.deploy.backup
             fi
 
             # Copy new files
-            cp -rf . /opt/${{ env.APP_NAME }}/
+            cp -rf . ~/${{ env.APP_NAME }}/
 
             # Copy .env.deploy file to the VPS if it exists in the repository (will overwrite if it exists)
             if [ -f .env.deploy ]; then
-              echo "Copying .env.deploy file to /opt/${{ env.APP_NAME }}/.env.deploy (overwriting if exists)"
-              cp -f .env.deploy /opt/${{ env.APP_NAME }}/.env.deploy
+              echo "Copying .env.deploy file to ~/${{ env.APP_NAME }}/.env.deploy (overwriting if exists)"
+              cp -f .env.deploy ~/${{ env.APP_NAME }}/.env.deploy
             fi
 
             # Check if .env.deploy file exists on the VPS
-            if [ ! -f /opt/${{ env.APP_NAME }}/.env.deploy ]; then
-              echo "Error: /opt/${{ env.APP_NAME }}/.env.deploy file not found!"
+            if [ ! -f ~/${{ env.APP_NAME }}/.env.deploy ]; then
+              echo "Error: ~/${{ env.APP_NAME }}/.env.deploy file not found!"
               echo "Make sure to add .env.deploy to your repository or create it manually on the VPS."
               exit 1
             fi
 
             # Verify Dockerfile exists in the app directory
-            if [ ! -f /opt/${{ env.APP_NAME }}/Dockerfile ]; then
-              echo "Error: Dockerfile not found in /opt/${{ env.APP_NAME }}!"
-              ls -la /opt/${{ env.APP_NAME }}
+            if [ ! -f ~/${{ env.APP_NAME }}/Dockerfile ]; then
+              echo "Error: Dockerfile not found in ~/${{ env.APP_NAME }}!"
+              ls -la ~/${{ env.APP_NAME }}
               exit 1
             fi
 
@@ -179,7 +179,7 @@ jobs:
 
             # Stop existing containers and start with docker-compose
             echo "Stopping existing services and starting with docker-compose..."
-            cd /opt/${{ env.APP_NAME }}
+            cd ~/${{ env.APP_NAME }}
 
             # Stop any existing containers that might conflict
             docker stop ${{ env.APP_NAME }}-app || true
