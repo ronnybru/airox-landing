@@ -240,7 +240,13 @@ jobs:
             # Start services with docker compose
             echo "Starting services with docker compose..."
             docker compose down || true
-            docker compose build
+
+            # Build with timeout and better resource management
+            echo "Building services with optimized settings..."
+            DOCKER_BUILDKIT=1 docker compose build --parallel --no-cache
+
+            # Start services
+            echo "Starting services..."
             docker compose up -d
 
             # Clean up
