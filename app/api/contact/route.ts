@@ -12,6 +12,7 @@ const contactFormSchema = z.object({
 
 export async function POST(request: NextRequest) {
 	try {
+		console.log("Sending an Email, before body request");
 		const body = await request.json();
 
 		// Validate the form data
