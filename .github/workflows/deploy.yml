@@ -243,7 +243,7 @@ jobs:
 
             # Build with timeout and better resource management
             echo "Building services with optimized settings..."
-            DOCKER_BUILDKIT=1 docker compose build --parallel --no-cache
+            DOCKER_BUILDKIT=1 docker compose build --parallel
 
             # Start services
             echo "Starting services..."
