@@ -4,7 +4,7 @@ import { H1, H2, H3, Paragraph, Lead, Muted } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, Smartphone } from "lucide-react";
+import { Star, Brain, Rocket, Code, Zap, Users, Shield } from "lucide-react";
 
 export default function Home() {
 	return (
@@ -15,33 +15,32 @@ export default function Home() {
 					<div className='space-y-6'>
 						<div className='inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium'>
 							<span className='flex h-2 w-2 rounded-full bg-primary mr-2'></span>
-							<span>AI-Powered Body Analysis</span>
+							<span>AI-First Development House</span>
 						</div>
 						<H1 className='mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight'>
-							Transform Your Body with{" "}
-							<span className='text-primary'>Jack AI</span>
+							Grow Your Business with{" "}
+							<span className='text-primary'>AI Done Right</span>
 						</H1>
 						<Lead className='mb-6'>
-							The most advanced AI body scanning app for iOS and Android. Get
-							instant body composition analysis, track your progress, and
-							achieve your fitness goals with personalized insights.
+							We&apos;re Airox.ai - the AI-first development house that
+							transforms businesses through intelligent automation, custom AI
+							solutions, and cutting-edge technology. Make AI the right way to
+							scale your operations and accelerate growth.
 						</Lead>
 						<div className='flex flex-col sm:flex-row gap-4'>
 							<Button
 								size='lg'
 								asChild
 								className='bg-primary/90 hover:bg-primary'>
-								<Link href='https://apps.apple.com/app/jack-ai' target='_blank'>
-									<Smartphone className='mr-2 h-4 w-4' />
-									Download for iOS
+								<Link href='/contact'>
+									<Rocket className='mr-2 h-4 w-4' />
+									Start Your AI Journey
 								</Link>
 							</Button>
 							<Button variant='outline' size='lg' asChild>
-								<Link
-									href='https://play.google.com/store/apps/details?id=com.airox'
-									target='_blank'>
-									<Smartphone className='mr-2 h-4 w-4' />
-									Download for Android
+								<Link href='/about'>
+									<Brain className='mr-2 h-4 w-4' />
+									Learn About Our Approach
 								</Link>
 							</Button>
 						</div>
@@ -54,8 +53,8 @@ export default function Home() {
 										<Image
 											src={`https://randomuser.me/api/portraits/${
 												i % 2 === 0 ? "men" : "women"
-											}/${i + 10}.jpg`}
-											alt='User avatar'
+											}/${i + 20}.jpg`}
+											alt='Client avatar'
 											width={32}
 											height={32}
 										/>
@@ -63,21 +62,20 @@ export default function Home() {
 								))}
 							</div>
 							<Paragraph className='text-sm'>
-								<span className='font-medium'>10,000+</span> users tracking
-								their fitness journey
+								<span className='font-medium'>50+</span> businesses transformed
+								with AI solutions
 							</Paragraph>
 						</div>
 					</div>
 					<div className='relative'>
-						<div className='aspect-[9/16] max-w-sm mx-auto'>
-							<Image
-								src='/scan-raport-male-flexing-one-arm.webp'
-								alt='Jack AI Body Scan Analysis'
-								fill
-								sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-								priority
-								className='object-contain'
-							/>
+						<div className='aspect-square max-w-lg mx-auto bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl p-8 flex items-center justify-center'>
+							<div className='text-center space-y-4'>
+								<Brain className='h-24 w-24 mx-auto text-primary' />
+								<H3 className='text-2xl font-bold'>AI-Powered Solutions</H3>
+								<Paragraph className='text-muted-foreground'>
+									Custom AI development tailored to your business needs
+								</Paragraph>
+							</div>
 						</div>
 						<div className='absolute -bottom-6 -left-6 bg-background rounded-lg p-4 shadow-lg border hidden md:block'>
 							<div className='flex items-center gap-2'>
@@ -89,76 +87,85 @@ export default function Home() {
 										/>
 									))}
 								</div>
-								<span className='text-sm font-medium'>4.8 rating</span>
+								<span className='text-sm font-medium'>
+									5.0 client satisfaction
+								</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Features Section - Benefit Focused */}
+			{/* Services Section - Benefit Focused */}
 			<section className='py-16 md:py-24'>
 				<div className='text-center mb-16'>
-					<H2 className='mb-4'>Advanced AI Body Analysis</H2>
+					<H2 className='mb-4'>AI Solutions That Drive Real Results</H2>
 					<Lead className='max-w-2xl mx-auto'>
-						Get instant insights into your body composition, track your progress
-						over time, and receive personalized recommendations to achieve your
-						fitness goals.
+						We specialize in building custom AI solutions that automate
+						processes, enhance decision-making, and unlock new growth
+						opportunities for your business.
 					</Lead>
 				</div>
 
 				<div className='grid md:grid-cols-3 gap-8'>
 					{[
 						{
-							title: "AI Body Scanning",
+							icon: <Brain className='h-8 w-8 text-primary' />,
+							title: "Custom AI Development",
 							description:
-								"Take a photo and get instant analysis of your body fat percentage, muscle mass, and overall body composition using advanced AI technology.",
+								"Tailored AI solutions built specifically for your business needs. From machine learning models to intelligent automation systems.",
 						},
 						{
-							title: "Progress Tracking",
+							icon: <Code className='h-8 w-8 text-primary' />,
+							title: "AI Integration Services",
 							description:
-								"Monitor your fitness journey with detailed charts, progress photos, and comprehensive analytics to see how your body changes over time.",
+								"Seamlessly integrate AI capabilities into your existing systems and workflows without disrupting your operations.",
 						},
 						{
-							title: "Jack Score",
+							icon: <Zap className='h-8 w-8 text-primary' />,
+							title: "Process Automation",
 							description:
-								"Get a personalized fitness score that takes into account your body composition, symmetry, posture, and overall health metrics.",
+								"Automate repetitive tasks and complex workflows with intelligent systems that learn and adapt to your business patterns.",
 						},
 						{
-							title: "Health Integration",
+							icon: <Users className='h-8 w-8 text-primary' />,
+							title: "AI Strategy Consulting",
 							description:
-								"Sync with Apple Health and Google Fit to get a complete picture of your health data including heart rate, sleep, and activity levels.",
+								"Get expert guidance on AI adoption, implementation roadmaps, and strategic planning to maximize your AI investment.",
 						},
 						{
-							title: "Personalized Insights",
+							icon: <Rocket className='h-8 w-8 text-primary' />,
+							title: "Scalable AI Infrastructure",
 							description:
-								"Receive AI-powered recommendations and insights tailored to your specific body type, goals, and progress patterns.",
+								"Build robust, scalable AI systems that grow with your business and handle increasing data volumes and complexity.",
 						},
 						{
-							title: "Privacy First",
+							icon: <Shield className='h-8 w-8 text-primary' />,
+							title: "Secure & Compliant AI",
 							description:
-								"Your body scan data is processed securely and privately. We prioritize your privacy and data security above all else.",
+								"Enterprise-grade security and compliance built into every AI solution, ensuring your data stays protected and private.",
 						},
-					].map((feature, i) => (
+					].map((service, i) => (
 						<div
 							key={i}
 							className='p-6 border rounded-lg bg-card hover:shadow-md transition-shadow'>
-							<H3 className='mb-2 text-xl'>{feature.title}</H3>
+							<div className='mb-4'>{service.icon}</div>
+							<H3 className='mb-2 text-xl'>{service.title}</H3>
 							<Paragraph className='text-muted-foreground'>
-								{feature.description}
+								{service.description}
 							</Paragraph>
 						</div>
 					))}
 				</div>
 			</section>
 
-			{/* Testimonials */}
+			{/* Client Success Stories */}
 			<section className='py-16 md:py-24 bg-muted/30 rounded-lg'>
 				<div className='text-center mb-16'>
-					<H2 className='mb-4'>Real Results from Real Users</H2>
+					<H2 className='mb-4'>Transforming Businesses with AI</H2>
 					<Lead className='max-w-2xl mx-auto'>
-						See how Jack AI is helping people transform their bodies and achieve
-						their fitness goals.
+						See how our AI solutions are helping businesses automate processes,
+						increase efficiency, and accelerate growth across industries.
 					</Lead>
 				</div>
 
@@ -166,21 +173,21 @@ export default function Home() {
 					{[
 						{
 							quote:
-								"Plateaued for years. This app got me fired up again — now I'm seeing gains I thought were behind me. The AI analysis is incredibly accurate!",
-							author: "Marcus Johnson",
-							role: "Fitness Enthusiast",
+								"Airox.ai transformed our customer service with intelligent automation. We reduced response times by 80% and increased customer satisfaction significantly.",
+							author: "Jennifer Martinez",
+							role: "CTO, TechFlow Solutions",
 						},
 						{
 							quote:
-								"The body composition tracking is amazing. I can finally see my muscle gain and fat loss progress in real numbers, not just the scale.",
-							author: "Sarah Chen",
-							role: "Personal Trainer",
+								"The custom AI model they built for our inventory management has saved us over $200K annually. Their expertise in AI implementation is unmatched.",
+							author: "Michael Thompson",
+							role: "Operations Director, RetailMax",
 						},
 						{
 							quote:
-								"As someone who travels a lot, having my entire fitness tracking in one app that works anywhere is a game-changer. The Jack Score keeps me motivated.",
-							author: "David Rodriguez",
-							role: "Business Executive",
+								"Working with Airox.ai was a game-changer. They didn&apos;t just build AI tools - they redesigned our entire workflow to be AI-first. Revenue increased 40%.",
+							author: "Sarah Kim",
+							role: "CEO, DataDriven Analytics",
 						},
 					].map((testimonial, i) => (
 						<div key={i} className='p-6 border rounded-lg bg-background'>
@@ -209,34 +216,32 @@ export default function Home() {
 			{/* Final CTA Section */}
 			<section className='py-16 md:py-24 text-center'>
 				<div className='max-w-3xl mx-auto'>
-					<H2 className='mb-4'>Ready to Transform Your Body?</H2>
+					<H2 className='mb-4'>Ready to Transform Your Business with AI?</H2>
 					<Lead className='mb-8'>
-						Join thousands of users who are already using Jack AI to track their
-						fitness progress and achieve their body goals. Download now and
-						start your 3-day free trial.
+						Join forward-thinking companies that are already leveraging AI to
+						automate processes, enhance decision-making, and accelerate growth.
+						Let&apos;s discuss how we can build the perfect AI solution for your
+						business.
 					</Lead>
 					<div className='flex flex-col sm:flex-row justify-center gap-4'>
 						<Button
 							size='lg'
 							asChild
 							className='bg-primary/90 hover:bg-primary'>
-							<Link href='https://apps.apple.com/app/jack-ai' target='_blank'>
-								<Smartphone className='mr-2 h-4 w-4' />
-								Download for iOS
+							<Link href='/contact'>
+								<Rocket className='mr-2 h-4 w-4' />
+								Get Started Today
 							</Link>
 						</Button>
 						<Button variant='outline' size='lg' asChild>
-							<Link
-								href='https://play.google.com/store/apps/details?id=com.airox'
-								target='_blank'>
-								<Smartphone className='mr-2 h-4 w-4' />
-								Download for Android
+							<Link href='/about'>
+								<Brain className='mr-2 h-4 w-4' />
+								Learn More About Us
 							</Link>
 						</Button>
 					</div>
 					<Paragraph className='text-sm text-muted-foreground mt-4'>
-						Available on iOS and Android • 3-day free trial • No credit card
-						required
+						Free consultation • Custom AI solutions • Enterprise-grade security
 					</Paragraph>
 				</div>
 			</section>

@@ -53,7 +53,7 @@ services:
     networks:
       app-network:
         aliases:
-          - airox-postgres
+          - airox-db-internal
 
 networks:
   app-network:
