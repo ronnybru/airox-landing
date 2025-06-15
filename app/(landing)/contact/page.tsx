@@ -50,21 +50,40 @@ export default function ContactPage() {
 	});
 
 	// Form submission handler
-	function onSubmit(values: z.infer<typeof formSchema>) {
+	async function onSubmit(values: z.infer<typeof formSchema>) {
 		setIsSubmitting(true);
 
-		// Simulate API call
-		setTimeout(() => {
-			console.log(values);
-			setIsSubmitting(false);
-			setIsSuccess(true);
-			form.reset();
+		try {
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(values),
+			});
 
-			// Reset success message after 5 seconds
-			setTimeout(() => {
-				setIsSuccess(false);
-			}, 5000);
-		}, 1500);
+			const result = await response.json();
+
+			if (response.ok && result.success) {
+				setIsSuccess(true);
+				form.reset();
+
+				// Reset success message after 5 seconds
+				setTimeout(() => {
+					setIsSuccess(false);
+				}, 5000);
+			} else {
+				// Handle error
+				console.error("Failed to send message:", result.message);
+				// You could add error state here if needed
+				alert("Failed to send message. Please try again later.");
+			}
+		} catch (error) {
+			console.error("Error submitting form:", error);
+			alert("Failed to send message. Please try again later.");
+		} finally {
+			setIsSubmitting(false);
+		}
 	}
 
 	return (
