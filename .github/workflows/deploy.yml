@@ -196,6 +196,28 @@ jobs:
             . ./.env.deploy
             set +a
 
+            # Start the database service first
+            echo "Starting database service..."
+            docker compose up -d db
+
+            # Wait for database to be ready
+            echo "Waiting for database to be ready..."
+            timeout=60
+            while [ $timeout -gt 0 ]; do
+              if docker exec airox-db pg_isready -U ${DATABASE_USER} -d ${DATABASE_NAME} >/dev/null 2>&1; then
+                echo "Database is ready!"
+                break
+              fi
+              echo "Waiting for database... ($timeout seconds remaining)"
+              sleep 2
+              timeout=$((timeout - 2))
+            done
+
+            if [ $timeout -le 0 ]; then
+              echo "Database failed to become ready within timeout"
+              exit 1
+            fi
+
             # Run the migration using the builder image which has all dependencies
             docker build --target builder -t app-builder .
             docker run --rm --network global-shared \
