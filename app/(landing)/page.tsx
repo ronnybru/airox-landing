@@ -15,7 +15,7 @@ export default function Home() {
 					<div className='space-y-6'>
 						<div className='inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium'>
 							<span className='flex h-2 w-2 rounded-full bg-primary mr-2'></span>
-							<span>AI-First Development House</span>
+							<span>AI-First Development Firm</span>
 						</div>
 						<H1 className='mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight'>
 							Grow Your Business with{" "}
