@@ -41,7 +41,7 @@ services:
     image: postgres:16.4-alpine
     restart: unless-stopped
     volumes:
-      - postgres_data_airox:/var/lib/postgresql/data
+      - postgres_data_airox_app:/var/lib/postgresql/data
     env_file:
       - .env.deploy
     environment:
@@ -61,4 +61,4 @@ networks:
       name: global-shared
 
 volumes:
-  postgres_data_airox:
+  postgres_data_airox_app:
