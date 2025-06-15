@@ -60,9 +60,9 @@ export default function ThankYouPage() {
 								<p className='text-sm text-gray-500 dark:text-gray-400'>
 									Need immediate assistance? Email us directly at{" "}
 									<a
-										href='mailto:support@airox.com'
+										href='mailto:support@airox.ai'
 										className='text-orange-600 dark:text-orange-400 hover:underline'>
-										support@airox.com
+										support@airox.ai
 									</a>
 								</p>
 							</div>

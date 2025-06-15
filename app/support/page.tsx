@@ -133,7 +133,7 @@ export default function SupportPage() {
 							<CardContent className='space-y-3'>
 								<div className='flex items-center gap-2'>
 									<Mail className='h-4 w-4 text-gray-500' />
-									<span className='text-sm'>support@airox.com</span>
+									<span className='text-sm'>support@airox.ai</span>
 								</div>
 								<div className='flex items-center gap-2'>
 									<Clock className='h-4 w-4 text-gray-500' />

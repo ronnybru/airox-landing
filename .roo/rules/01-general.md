@@ -1,21 +1,19 @@
 # Project summary
 
-airox is a comprehensive SaaS boilerplate designed for the new era of coding where LLMs are integral to the development process. It empowers developers to focus on their vision while AI handles complex tasks such as generating content, managing deployments, and automating workflows.
+airox is a comprehensive Developer Agency designed for the new era of coding where LLMs are integral to the development process. It empowers developers to focus on their vision while AI handles complex tasks such as generating content, managing deployments, and automating workflows.
 
 ## Core Features
 
 - **AI-First Architecture**: Built with clean, LLM-friendly code that enables AI agents to understand and modify the codebase effectively
-- **Rapid Launch System**: Eliminates common SaaS setup barriers (authentication, database configuration, deployment) to accelerate time-to-market
 - **Full-Stack Solution**: Includes everything from frontend components to backend services, cron jobs, queues, and database setup
 - **Deployment Options**: One-click deployment to Vercel or self-hosted Docker environments
-- **Developer Experience**: Optimized for both AI-assisted development and traditional coding workflows
+- **Developer Experience**: Optimized for both AI-assisted development and rapid development both AI application and no AI applications using AI.
 
 ## Key Benefits
 
-- **Reduced Development Time**: Skip past common implementation challenges that typically slow down SaaS projects
+- **Reduced Development Time**: Skip past common implementation challenges that typically slow projects
 - **AI Integration**: Leverage LLMs for content generation, code assistance, and automation
 - **Flexibility**: Adaptable to various SaaS business models and use cases
-- **Community Support**: Join a growing community of VibeCoders building with the platform
 
 airox takes developers from idea to deployed reality with minimal friction, handling the complexity while they stay in flow and focus on building their unique vision.
 
@@ -23,7 +21,7 @@ airox takes developers from idea to deployed reality with minimal friction, hand
 
 💡 **Why I Built This — Ronny Bruknapp, Founder of airox**
 
-I poured thousands of dollars into API access and spent years fine-tuning how to code with AI—not just alongside it. I started learning to code one year before GPT-4 dropped, giving me a front-row seat to this revolution. airox is the result of obsession, battle-tested workflows, and a belief that LLMs aren't just tools—they're teammates. This is the framework I wish existed when I started. Now it's yours.
+I poured thousands of dollars into API access and spent years fine-tuning how to code with AI—not just alongside it. I started learning to code one year before GPT-4 dropped, giving me a front-row seat to this revolution. airox is the result of obsession, battle-tested workflows, and a belief that LLMs aren't just tools—they're teammates.
 
 # Security
 
@@ -58,7 +56,7 @@ DO NOT read or modify:
 
 ## Payment Processing
 
-- LemonSqueezy integration for subscriptions and payments
+- LemonSqueezy for subscriptions and payments - Or Stripe
 
 ## Email
 

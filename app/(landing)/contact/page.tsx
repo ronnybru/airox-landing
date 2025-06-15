@@ -99,9 +99,9 @@ export default function ContactPage() {
 								<div>
 									<div className='font-medium'>Email</div>
 									<a
-										href='mailto:hello@airox.com'
+										href='mailto:hello@airox.ai'
 										className='text-sm text-muted-foreground hover:text-primary transition-colors'>
-										hello@airox.com
+										hello@airox.ai
 									</a>
 								</div>
 							</div>

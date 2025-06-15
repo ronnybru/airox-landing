@@ -5,9 +5,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata = {
-	title: "About airox",
+	title: "About Airox.ai",
 	description:
-		"Learn about airox, the ultimate Next.js boilerplate designed for developers leveraging AI.",
+		"Learn about Airox.ai, the AI-first development house that transforms businesses through intelligent automation and custom AI solutions.",
 };
 
 export default function AboutPage() {
@@ -16,10 +16,11 @@ export default function AboutPage() {
 			{/* Hero Section */}
 			<section className='py-16 md:py-24'>
 				<div className='max-w-3xl mx-auto text-center'>
-					<H1 className='mb-6'>About airox</H1>
+					<H1 className='mb-6'>About Airox.ai</H1>
 					<Lead className='mb-8'>
-						airox is a comprehensive SaaS boilerplate designed for the new era
-						of coding where LLMs are integral to the development process.
+						We&apos;re Airox.ai - the AI-first development house that transforms
+						businesses through intelligent automation, custom AI solutions, and
+						cutting-edge technology.
 					</Lead>
 				</div>
 			</section>
@@ -30,21 +31,21 @@ export default function AboutPage() {
 					<div>
 						<H2 className='mb-6'>Our Mission</H2>
 						<Paragraph className='mb-4'>
-							We believe that AI is transforming how developers build software.
-							airox was created to empower developers to focus on their vision
-							while AI handles complex tasks such as generating content,
-							managing deployments, and automating workflows.
+							We specialize in building custom AI solutions that automate
+							processes, enhance decision-making, and unlock new growth
+							opportunities for your business. Our AI-first approach transforms
+							how companies operate and scale their operations.
 						</Paragraph>
 						<Paragraph>
-							Our goal is to eliminate common SaaS setup barriers like
-							authentication, database configuration, and deployment to
-							accelerate your time-to-market. We want you to stay in flow and
-							focus on building your unique vision.
+							Our mission is to make AI accessible and practical for businesses
+							of all sizes. We bridge the gap between cutting-edge AI technology
+							and real-world business applications, delivering solutions that
+							drive measurable results and accelerate growth.
 						</Paragraph>
 					</div>
 					<div className='relative aspect-video rounded-lg overflow-hidden'>
 						<Image
-							src='https://res.cloudinary.com/dsbyq8lkx/image/upload/v1699302784/wxzdfckr0fhdb0uuym5p.jpg'
+							src='https://res.cloudinary.com/dsbyq8lkx/image/upload/v1750009791/ChatGPT_Image_15._juni_2025_19_48_45_a3hx6m.webp'
 							alt='airox Mission'
 							fill
 							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -57,10 +58,10 @@ export default function AboutPage() {
 			{/* Core Features Section */}
 			<section className='py-12 md:py-16 bg-muted/30 rounded-lg'>
 				<div className='max-w-3xl mx-auto text-center mb-12'>
-					<H2 className='mb-4'>Core Features</H2>
+					<H2 className='mb-4'>Our Expertise</H2>
 					<Lead>
-						airox is built with a focus on developer experience and AI
-						integration.
+						Airox.ai delivers comprehensive AI solutions with a focus on
+						business transformation and intelligent automation.
 					</Lead>
 				</div>
 
@@ -93,11 +94,11 @@ export default function AboutPage() {
 					</div>
 
 					<div className='p-6 bg-background rounded-lg border'>
-						<H3 className='mb-4'>Deployment Options</H3>
+						<H3 className='mb-4'>Enterprise Delivery</H3>
 						<Paragraph>
-							One-click deployment to Vercel or self-hosted Docker environments.
-							Deploy your SaaS with confidence and scale as your user base
-							grows.
+							From cloud-native deployments to on-premise installations, we
+							deliver AI solutions that integrate seamlessly with your existing
+							infrastructure and scale with your business needs.
 						</Paragraph>
 					</div>
 				</div>
@@ -109,7 +110,7 @@ export default function AboutPage() {
 					<div className='flex flex-col md:flex-row gap-8 items-center mb-8'>
 						<div className='w-32 h-32 rounded-full overflow-hidden relative flex-shrink-0'>
 							<Image
-								src='https://randomuser.me/api/portraits/men/22.jpg'
+								src='https://res.cloudinary.com/dsbyq8lkx/image/upload/v1747409930/profile-picture_dpgvvg.png'
 								alt='Ronny Bruknapp'
 								fill
 								className='object-cover'
@@ -118,7 +119,7 @@ export default function AboutPage() {
 						<div>
 							<H2 className='mb-2'>Founder&apos;s Vision</H2>
 							<Paragraph className='text-lg font-medium mb-2'>
-								Ronny Bruknapp, Founder of airox
+								Ronny Bruknapp, Founder of Airox
 							</Paragraph>
 						</div>
 					</div>
@@ -196,7 +197,7 @@ export default function AboutPage() {
 							<div className='text-3xl mb-2'>💳</div>
 							<H3 className='text-lg mb-1'>Payments</H3>
 							<Paragraph className='text-sm text-muted-foreground'>
-								LemonSqueezy integration
+								LemonSqueezy & Stripe
 							</Paragraph>
 						</div>
 
@@ -216,14 +217,11 @@ export default function AboutPage() {
 				<div className='max-w-2xl mx-auto'>
 					<H2 className='mb-4'>Ready to Get Started?</H2>
 					<Paragraph className='mb-8'>
-						Join hundreds of developers building the future with airox. Get
-						started today and launch your AI-powered SaaS faster.
+						Join hundreds of enterprises building the future with AI. Get
+						started today and grow your business faster.
 					</Paragraph>
 					<div className='flex flex-col sm:flex-row justify-center gap-4'>
 						<Button size='lg' asChild>
-							<Link href='/'>Get airox</Link>
-						</Button>
-						<Button variant='outline' size='lg' asChild>
 							<Link href='/contact'>
 								Contact Us <ArrowRight className='ml-2 h-4 w-4' />
 							</Link>
