@@ -174,7 +174,7 @@ The airox Team`,
 		"airox://",
 		"airox://*",
 		// Apple Sign In requirement
-		"https://appleid.apple.com",
+		// "https://appleid.apple.com",
 		// Production domain
 		"https://airox.ai",
 		// Local development origins
@@ -200,12 +200,12 @@ The airox Team`,
 			clientId: process.env.GOOGLE_CLIENT_ID as string,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
 		},
-		apple: {
-			clientId: process.env.APPLE_CLIENT_ID as string,
-			clientSecret: process.env.APPLE_CLIENT_SECRET as string,
-			// Optional
-			appBundleIdentifier: process.env.APPLE_APP_BUNDLE_IDENTIFIER as string,
-		},
+		// apple: {
+		// 	clientId: process.env.APPLE_CLIENT_ID as string,
+		// 	clientSecret: process.env.APPLE_CLIENT_SECRET as string,
+		// 	// Optional
+		// 	appBundleIdentifier: process.env.APPLE_APP_BUNDLE_IDENTIFIER as string,
+		// },
 	},
 	plugins: [
 		expo(),
