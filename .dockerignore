@@ -47,8 +47,10 @@ Dockerfile*
 docker-compose*
 .dockerignore
 
-# Database
-drizzle/
+# Database - keep migration files but exclude some meta files
+!drizzle/
+drizzle/meta/*.json
+!drizzle/meta/_journal.json
 
 # Testing
 coverage/

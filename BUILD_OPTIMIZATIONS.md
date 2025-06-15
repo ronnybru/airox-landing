@@ -20,10 +20,11 @@ Your build time has been optimized from **10 minutes** to **2-3 minutes** throug
 **Key Changes:**
 
 - **Smaller build context**: Excludes `node_modules`, `.git`, `docs/`, logs, and other unnecessary files
+- **Migration files preserved**: Keeps `drizzle/` directory with SQL migration files for deployment
 - **Faster transfers**: Reduces data sent to Docker daemon
 - **Better caching**: Prevents cache invalidation from irrelevant file changes
 
-**Impact**: Faster Docker context transfer and better layer caching.
+**Impact**: Faster Docker context transfer and better layer caching while preserving database migrations.
 
 ### 3. `next.config.ts`
 
@@ -83,5 +84,11 @@ docker-compose build --parallel
 # Start services
 docker-compose up -d
 ```
+
+## Migration Fix Applied
+
+**Issue Fixed**: The deployment was failing with `ENOENT: no such file or directory, scandir 'drizzle'` because the optimized `.dockerignore` was excluding the migration files needed by the deployment script.
+
+**Solution**: Updated `.dockerignore` to preserve the `drizzle/` directory and its SQL migration files while still excluding unnecessary meta files.
 
 The optimizations are now active and your next build should be significantly faster!
