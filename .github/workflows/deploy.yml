@@ -199,9 +199,9 @@ jobs:
             # Run the migration using the builder image which has all dependencies
             docker build --target builder -t app-builder .
             docker run --rm --network global-shared \
-              -e DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@airox-postgres:5432/${DATABASE_NAME}" \
-              -e DATABASE_HOST=airox-postgres \
-              -e DATABASE_PORT=5432 \
+              -e DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@192.168.86.88:5433/${DATABASE_NAME}" \
+              -e DATABASE_HOST=192.168.86.88 \
+              -e DATABASE_PORT=5433 \
               -e DATABASE_NAME \
               -e DATABASE_USER \
               -e DATABASE_PASSWORD \
