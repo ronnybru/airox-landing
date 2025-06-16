@@ -97,8 +97,8 @@ services:
 
 networks:
   app-network:
-    name: global-shared
-    external: true
+    external:
+      name: global-shared
 
 volumes:
   postgres_data_airox_app:
