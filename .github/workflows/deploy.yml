@@ -110,6 +110,10 @@ jobs:
               docker --version
             fi
 
+            # Create global-shared network EARLY to avoid race conditions
+            echo "Creating global-shared Docker network early..."
+            docker network create global-shared 2>/dev/null || echo "global-shared network already exists"
+
             # Backup .env.deploy file if it exists
             if [ -f ~/${{ env.APP_NAME }}/.env.deploy ]; then
               echo "Backing up existing .env.deploy file"
@@ -150,12 +154,16 @@ jobs:
               exit 1
             fi
 
-            # Check if global-shared network exists, if not create it
-            if ! docker network ls | grep -q global-shared; then
-              echo "Creating global-shared Docker network..."
-              docker network create global-shared
+            # Ensure global-shared network exists before any Docker operations
+            echo "Ensuring global-shared Docker network exists..."
+            docker network create global-shared 2>/dev/null || echo "global-shared network already exists"
+
+            # Verify network was created/exists
+            if docker network ls | grep -q global-shared; then
+              echo "✓ global-shared Docker network is ready"
             else
-              echo "global-shared Docker network already exists."
+              echo "✗ Failed to create global-shared network"
+              exit 1
             fi
 
             # Check if Redis is running, if not start it
