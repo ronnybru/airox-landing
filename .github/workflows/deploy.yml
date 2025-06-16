@@ -19,6 +19,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -185,6 +186,34 @@ jobs:
             docker stop ${{ env.APP_NAME }}-app || true
             docker rm ${{ env.APP_NAME }}-app || true
 
+            # Aggressive cleanup BEFORE building to free up space
+            echo "Performing aggressive Docker cleanup to free disk space..."
+            # Stop all containers except essential ones
+            docker stop $(docker ps -aq) 2>/dev/null || true
+            # Remove all stopped containers
+            docker container prune -f
+            # Remove ALL unused images (not just 24h old ones)
+            docker image prune -a -f
+            # Remove unused volumes
+            docker volume prune -f
+            # Remove unused networks
+            docker network prune -f
+            # Remove build cache
+            docker builder prune -a -f
+            # Clean system-wide
+            docker system prune -af --volumes
+            # Show disk usage after cleanup
+            echo "Disk usage after cleanup:"
+            df -h
+
+            # Set npm configuration for faster installs
+            echo "Configuring npm for faster installs..."
+            npm config set registry https://registry.npmjs.org/
+            npm config set fetch-retries 3
+            npm config set fetch-retry-factor 2
+            npm config set fetch-retry-mintimeout 10000
+            npm config set fetch-retry-maxtimeout 60000
+
             # Create a custom migration script
             echo "Creating migration script..."
             cat > migrate.sh << 'EOL'
@@ -243,7 +272,17 @@ jobs:
 
             # Build with timeout and better resource management
             echo "Building services with optimized settings..."
-            DOCKER_BUILDKIT=1 docker compose build --parallel
+            export DOCKER_BUILDKIT=1
+            export COMPOSE_DOCKER_CLI_BUILD=1
+            # Build with timeout to prevent hanging
+            timeout 900 docker compose build --parallel || {
+              echo "Build timed out after 15 minutes, trying sequential build..."
+              timeout 600 docker compose build || {
+                echo "Sequential build also failed, cleaning up and retrying..."
+                docker system prune -af
+                timeout 600 docker compose build
+              }
+            }
 
             # Start services
             echo "Starting services..."
