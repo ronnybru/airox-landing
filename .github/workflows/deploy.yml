@@ -19,10 +19,21 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
 
       - name: Create deployment package
         run: |
@@ -234,9 +245,9 @@ jobs:
             # Make the script executable
             chmod +x migrate.sh
 
-            # Run the migration script
+            # Run the migration script with timeout
             echo "Running database migrations..."
-            ./migrate.sh
+            timeout 10m ./migrate.sh
 
             # Start services with docker compose
             echo "Starting services with docker compose..."
@@ -244,7 +255,11 @@ jobs:
 
             # Build with timeout and better resource management
             echo "Building services with optimized settings..."
-            DOCKER_BUILDKIT=1 docker compose build --parallel
+            # Add timeout to prevent hanging during build
+            timeout 45m bash -c "DOCKER_BUILDKIT=1 docker compose build --parallel" || {
+              echo "Parallel build timed out, trying sequential build..."
+              timeout 30m bash -c "DOCKER_BUILDKIT=1 docker compose build"
+            }
 
             # Start services
             echo "Starting services..."
